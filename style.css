@@ -1,0 +1,94 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: #0d0d0d;
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Background Tembok Bertekstur */
+.wall-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at center, #2c2c2c 0%, #000 100%),
+                url('https://www.transparenttextures.com/patterns/dark-matter.png');
+    background-blend-mode: multiply;
+}
+
+/* Gorden */
+.curtain-container {
+    position: fixed;
+    width: 100%; height: 100vh;
+    z-index: 100;
+    display: flex;
+    pointer-events: none;
+}
+
+.curtain {
+    width: 50%; height: 100%;
+    background: linear-gradient(90deg, #400 0%, #800 50%, #400 100%);
+    background-size: 40px 100%; /* Efek lipatan kain */
+    box-shadow: inset 0 0 100px #000;
+}
+
+.welcome-msg {
+    position: absolute;
+    width: 100%; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #d4af37;
+    z-index: 101;
+}
+
+.welcome-msg h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 8vw, 4rem); }
+
+/* Galeri & Grid */
+.gallery-wrapper { padding: 100px 5%; }
+
+.art-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 60px;
+    margin-top: 80vh;
+}
+
+.art-card { display: flex; flex-direction: column; align-items: center; }
+
+/* Bingkai Artistik */
+.frame {
+    background: #d4af37;
+    padding: 15px;
+    border: 10px solid #1a1a1a;
+    box-shadow: 15px 25px 40px rgba(0,0,0,0.8);
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+    width: 100%;
+}
+
+.frame:hover { transform: scale(1.03) rotate(1deg); }
+
+.frame img { width: 100%; height: auto; display: block; }
+
+.caption { margin-top: 15px; text-align: center; color: #e0c097; }
+
+/* Pop-up (Lightbox) */
+.lightbox {
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+}
+
+.lightbox img { max-width: 90%; max-height: 90%; border: 5px solid #d4af37; }
+
+/* Responsif Mobile */
+@media (max-width: 600px) {
+    .art-grid { grid-template-columns: 1fr; gap: 40px; }
+    .frame { border-width: 6px; padding: 10px; }
+}
